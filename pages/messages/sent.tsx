@@ -1,4 +1,4 @@
-import { Button, Space, Table } from 'antd';
+import { Button, Modal, Space, Table } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 import Title from 'antd/lib/typography/Title';
 import type { NextPage } from 'next';
@@ -33,10 +33,17 @@ const mockScheduled = [
 const SentMessages: NextPage = () => {
   const router = useRouter();
   const [scheduled, setScheduled] = useState(mockScheduled);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedMessage, setSelectedMessage] = useState<Sent>();
 
   useEffect(() => {
     // TODO: fetch scheduled from backend
   });
+
+  function selectMessage(message: Sent) {
+    setSelectedMessage(message);
+    setShowModal(true);
+  }
 
   function deleteMessage(id: string) {
   }
@@ -45,7 +52,9 @@ const SentMessages: NextPage = () => {
     {
       title: 'Message title',
       dataIndex: 'title',
-      key: 'title',
+      render: (_, record) => (
+        <Button type="link" onClick={() => selectMessage(record)}>{record.title}</Button>
+      ),
     },
     {
       title: 'Sent',
@@ -69,8 +78,19 @@ const SentMessages: NextPage = () => {
 
         {scheduled.length !== 0 && <Table columns={columns} dataSource={scheduled} />}
       </Space>
+      {selectedMessage && <Modal
+        title={selectedMessage.title}
+        visible={showModal}
+        onCancel={() => setShowModal(false)}
+        footer={null}
+      >
+        <p>We are excited to share that MovieShots is offering 40 spots and 1 free MovieShots NFT to the Meta Angels community.</p>
+        <p>To enter the allowlist raffle (40 spots), click here: https://premint.xyz/meta-angels-x-movieshots/</p>
+        <p>🎦About MovieShots🎦</p>
+        <p>MovieShots is the first feature film on the blockchain edited into its shots. They are a film collector's item for a new generation of film lovers!</p>
+      </Modal>}
     </NavContainer>
   )
 }
 
-export default Sent;
+export default SentMessages;
