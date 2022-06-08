@@ -13,7 +13,7 @@ const NavContainer: FunctionComponent<HTMLAttributes<HTMLDivElement>> = (props) 
       <Layout style={{ flexDirection: "row" }}>
         <Sidebar />
         <Layout>
-          <Content style={{ width: "720px", padding: "24px" }}>
+          <Content style={{ maxWidth: "720px", padding: "24px" }}>
             {props.children}
           </Content>
         </Layout>

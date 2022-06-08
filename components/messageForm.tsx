@@ -1,11 +1,9 @@
 import { ClockCircleOutlined, QuestionCircleOutlined, SendOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Tooltip } from 'antd';
+import { Button, Checkbox, Form, Input, Space, Tooltip } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import Text from 'antd/lib/typography/Text';
-import Title from 'antd/lib/typography/Title';
-import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
-import NavContainer from '../../components/navContainer';
 
 function checkboxItems() {
   const data = [
@@ -38,7 +36,7 @@ function checkboxItems() {
       description: "Anything else",
     },
   ];
-  return <div style={{ columnCount: 3}}>
+  return <div style={{ columnCount: 3 }}>
     {data.map(item => <Checkbox style={{ marginLeft: 0 }}>
       {item.label}
       <Tooltip title={item.description}>
@@ -48,34 +46,45 @@ function checkboxItems() {
   </div>
 
 }
-const NewMessage: NextPage = () => {
+
+const MessageForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  return (
-    <NavContainer>
-      <Title level={1}>Create a message</Title>
-      <Form layout="vertical">
-        <Form.Item label={<Text strong>Message title</Text>}>
-          <Input />
-        </Form.Item>
-        <Form.Item label={<Text strong>Categories that apply to your message</Text>}>
-          {checkboxItems()}
-        </Form.Item>
-        <Form.Item label={<Text strong>Message body</Text>}>
-          <TextArea rows={6} />
-        </Form.Item>
+  const router = useRouter();
 
-        <div>
-          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "5px" }}>This message will be sent to #announcements</div>
-          <div style={{ display: "flex", justifyContent: "flex-end"}}>
-            <Button icon={<ClockCircleOutlined />} style={{ marginRight: "10px"}}>Send later</Button>
-            <Button type="primary" icon={<SendOutlined />}>Send now</Button>
-          </div>
+  function sendLater() {
+
+  }
+
+  function sendNow() {
+    const id = "1";
+    router.push(`/messages/${id}/success`);
+  }
+
+  return (
+    <Form layout="vertical">
+      <Form.Item label={<Text strong>Message title</Text>}>
+        <Input />
+      </Form.Item>
+      <Form.Item label={<Text strong>Categories that apply to your message</Text>}>
+        {checkboxItems()}
+      </Form.Item>
+      <Form.Item label={<Text strong>Message body</Text>}>
+        <TextArea rows={6} />
+      </Form.Item>
+
+      <Space direction="vertical" style={{ display: "flex" }}>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>This message will be sent to #announcements</div>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Space>
+            <Button icon={<ClockCircleOutlined />} onClick={sendLater}>Send later</Button>
+            <Button type="primary" icon={<SendOutlined />} onClick={sendNow}>Send now</Button>
+          </Space>
         </div>
-      </Form>
-    </NavContainer>
+      </Space>
+    </Form>
   )
 }
 
-export default NewMessage;
+export default MessageForm;
