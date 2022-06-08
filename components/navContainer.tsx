@@ -1,15 +1,12 @@
-import { Layout, Menu } from 'antd';
-import { Content, Header } from 'antd/lib/layout/layout';
+import { Layout } from 'antd';
+import { Content } from 'antd/lib/layout/layout';
 import { FunctionComponent, HTMLAttributes } from 'react';
+import HeaderContainer from './headerContainer';
 import Sidebar from './sidebar';
 
 const NavContainer: FunctionComponent<HTMLAttributes<HTMLDivElement>> = (props) => {
   return (
-    <Layout>
-      <Header>
-        <div style={{ color: "white" }}>Pearl</div>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} />
-      </Header>
+    <HeaderContainer>
       <Layout style={{ flexDirection: "row" }}>
         <Sidebar />
         <Layout>
@@ -18,7 +15,7 @@ const NavContainer: FunctionComponent<HTMLAttributes<HTMLDivElement>> = (props) 
           </Content>
         </Layout>
       </Layout>
-    </Layout>
+    </HeaderContainer>
   )
 }
 
