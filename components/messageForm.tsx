@@ -1,5 +1,5 @@
 import { ClockCircleOutlined, QuestionCircleOutlined, SendOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Space, Tooltip } from 'antd';
+import { Button, Checkbox, Form, Input, Modal, Space, Tooltip } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import Text from 'antd/lib/typography/Text';
 import { useRouter } from 'next/router';
@@ -51,7 +51,8 @@ function checkboxItems() {
 const MessageForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  const [showScheduleModal, setShowScheduleModal] = useState(false);
+  const [showSendModal, setShowSendModal] = useState(false);
 
   const router = useRouter();
 
@@ -76,16 +77,24 @@ const MessageForm = () => {
         <div style={{ display: "flex", justifyContent: "flex-end" }}>This message will be sent to #announcements</div>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <Space>
-            <Button icon={<ClockCircleOutlined />} onClick={() => setShowModal(true)}>Send later</Button>
-            <Button type="primary" icon={<SendOutlined />} onClick={sendNow}>Send now</Button>
+            <Button icon={<ClockCircleOutlined />} onClick={() => setShowScheduleModal(true)}>Send later</Button>
+            <Button type="primary" icon={<SendOutlined />} onClick={() => setShowSendModal(true)}>Send now</Button>
           </Space>
         </div>
       </Space>
+      <Modal
+        title="Send now"
+        visible={showSendModal}
+        onCancel={() => setShowSendModal(false)}
+        okText="Confirm"
+      >
+        Please confirm you want to send your message now
+      </Modal>
       <ScheduleModal
         title="Send later"
         subTitle="When would you like to send this message?"
-        visible={showModal}
-        cancel={() => setShowModal(false)}
+        visible={showScheduleModal}
+        cancel={() => setShowScheduleModal(false)}
         send={() => {}}
         updateScheduledTime={() => {}}
       />

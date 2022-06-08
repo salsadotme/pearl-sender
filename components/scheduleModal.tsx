@@ -20,15 +20,18 @@ const ScheduleModal = ({ title, subTitle, visible, cancel, send, updateScheduled
       visible={visible}
       onCancel={cancel}
       footer={<div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Button onClick={send}>
+        {/* TODO: remove when on the new message screen */}
+        {/*<Button onClick={send}>
           Send now
-        </Button>
+  </Button>*/}
+        <div />
         <div>
           <Button onClick={cancel}>
             Cancel
           </Button>
           <Button type="primary" onClick={() => updateScheduledTime(scheduledTime)} >
-            Reschedule message
+            {/* TODO: fix this copy when on the new message screen */}
+            Schedule message
           </Button>
         </div>
       </div>}
