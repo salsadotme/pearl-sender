@@ -22,9 +22,9 @@ const items: any[] = [
 ]
 const Sidebar = () => {
   return (
-    <Sider width={200}>
+    <Sider width={220}>
       <Menu
-      style={{ height: "100%"}}
+        style={{ height: "100%" }}
         items={items}
       />
     </Sider>
