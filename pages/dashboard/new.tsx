@@ -1,5 +1,7 @@
 import { ClockCircleOutlined, QuestionCircleOutlined, SendOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Tooltip } from 'antd';
+import TextArea from 'antd/lib/input/TextArea';
+import Text from 'antd/lib/typography/Text';
 import Title from 'antd/lib/typography/Title';
 import type { NextPage } from 'next';
 import { useState } from 'react';
@@ -36,8 +38,8 @@ function checkboxItems() {
       description: "Anything else",
     },
   ];
-  return <div>
-    {data.map(item => <Checkbox>
+  return <div style={{ columnCount: 3}}>
+    {data.map(item => <Checkbox style={{ marginLeft: 0 }}>
       {item.label}
       <Tooltip title={item.description}>
         <QuestionCircleOutlined style={{ marginLeft: "5px" }} />
@@ -54,14 +56,14 @@ const NewMessage: NextPage = () => {
     <NavContainer>
       <Title level={1}>Create a message</Title>
       <Form layout="vertical">
-        <Form.Item label="Message title">
+        <Form.Item label={<Text strong>Message title</Text>}>
           <Input />
         </Form.Item>
-        <Form.Item label="Categories that apply to your message">
+        <Form.Item label={<Text strong>Categories that apply to your message</Text>}>
           {checkboxItems()}
         </Form.Item>
-        <Form.Item label="Message body">
-          <Input />
+        <Form.Item label={<Text strong>Message body</Text>}>
+          <TextArea rows={6} />
         </Form.Item>
 
         <div>
