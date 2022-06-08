@@ -66,12 +66,12 @@ const SentMessages: NextPage = () => {
 
   return (
     <NavContainer>
-      <Title level={1}>Scheduled messages</Title>
+      <Title level={1}>Sent messages</Title>
       <Space direction="vertical" size="large">
 
         {scheduled.length === 0 && <div>
           <p>
-            You currently have no scheduled messages
+            You haven't sent any messages yet
           </p>
         </div>}
         <Button type="primary" onClick={() => router.push("/messages/new")}>Create a new message</Button>

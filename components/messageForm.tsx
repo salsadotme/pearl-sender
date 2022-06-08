@@ -4,6 +4,7 @@ import TextArea from 'antd/lib/input/TextArea';
 import Text from 'antd/lib/typography/Text';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import ScheduleModal from './scheduleModal';
 
 function checkboxItems() {
   const data = [
@@ -50,12 +51,9 @@ function checkboxItems() {
 const MessageForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
-
-  function sendLater() {
-
-  }
 
   function sendNow() {
     const id = "1";
@@ -78,11 +76,19 @@ const MessageForm = () => {
         <div style={{ display: "flex", justifyContent: "flex-end" }}>This message will be sent to #announcements</div>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <Space>
-            <Button icon={<ClockCircleOutlined />} onClick={sendLater}>Send later</Button>
+            <Button icon={<ClockCircleOutlined />} onClick={() => setShowModal(true)}>Send later</Button>
             <Button type="primary" icon={<SendOutlined />} onClick={sendNow}>Send now</Button>
           </Space>
         </div>
       </Space>
+      <ScheduleModal
+        title="Send later"
+        subTitle="When would you like to send this message?"
+        visible={showModal}
+        cancel={() => setShowModal(false)}
+        send={() => {}}
+        updateScheduledTime={() => {}}
+      />
     </Form>
   )
 }

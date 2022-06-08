@@ -6,6 +6,7 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import NavContainer from '../../components/navContainer';
+import ScheduleModal from '../../components/scheduleModal';
 
 interface Scheduled {
   id: string;
@@ -34,10 +35,17 @@ const mockScheduled = [
 const ScheduledMessages: NextPage = () => {
   const router = useRouter();
   const [scheduled, setScheduled] = useState(mockScheduled);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedMessage, setSelectedMessage] = useState<Scheduled>();
 
   useEffect(() => {
     // TODO: fetch scheduled from backend
   });
+
+  function selectMessage(message: Scheduled) {
+    setSelectedMessage(message);
+    setShowModal(true);
+  }
 
   function deleteMessage(id: string) {
   }
@@ -54,7 +62,7 @@ const ScheduledMessages: NextPage = () => {
       render: (_, record) => (
         <Space>
           {record.scheduledFor}
-          <Button icon={<ClockCircleOutlined />}>Change</Button>
+          <Button icon={<ClockCircleOutlined />} onClick={() => selectMessage(record)}>Change</Button>
         </Space>
       ),
     },
@@ -85,6 +93,14 @@ const ScheduledMessages: NextPage = () => {
 
         {scheduled.length !== 0 && <Table columns={columns} dataSource={scheduled} />}
       </Space>
+      {selectedMessage && <ScheduleModal
+        title="Reschedule"
+        subTitle={`When would you like to send "${selectedMessage.title}"?`}
+        visible={showModal}
+        cancel={() => setShowModal(false)}
+        send={() => {}}
+        updateScheduledTime={() => {}}
+      />}
     </NavContainer>
   )
 }
