@@ -22,7 +22,7 @@ const HeaderContainer: FunctionComponent<HTMLAttributes<HTMLDivElement>> = (prop
   return (
     <WalletProvider wallets={wallets} autoConnect>
       <WalletModalProvider>
-        <Layout className={props.className} style={{ padding: "16px" }}>
+        <Layout className="pearl-container" style={{ padding: "16px" }}>
           <Header style={{ height: "54px", display: "flex", padding: "0 20px", marginBottom: "16px", justifyContent: "space-between", alignItems: "center", background: "white", borderRadius: "8px" }}>
             <div style={{ fontSize: "20px" }}>Pearl</div>
             <WalletMultiButton />
