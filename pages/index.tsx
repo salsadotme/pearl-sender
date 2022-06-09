@@ -15,7 +15,7 @@ const Home: NextPage = () => {
   });
 
   return (
-    <NavContainer>
+    <NavContainer selectedTab='home'>
       {firstTime && <div>
         <Title level={1}>Welcome! 👏</Title>
 

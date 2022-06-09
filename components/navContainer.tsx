@@ -4,11 +4,15 @@ import { FunctionComponent, HTMLAttributes } from 'react';
 import HeaderContainer from './headerContainer';
 import Sidebar from './sidebar';
 
-const NavContainer: FunctionComponent<HTMLAttributes<HTMLDivElement>> = (props) => {
+interface NavContainerProps {
+  selectedTab: string;
+}
+
+const NavContainer: FunctionComponent<HTMLAttributes<HTMLDivElement> & NavContainerProps> = (props) => {
   return (
     <HeaderContainer>
       <Layout style={{ flexDirection: "row" }}>
-        <Sidebar />
+        <Sidebar selectedTab={props.selectedTab} />
         <Layout>
           <Content style={{ maxWidth: "720px", padding: "24px" }}>
             {props.children}

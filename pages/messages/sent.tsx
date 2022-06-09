@@ -65,7 +65,7 @@ const SentMessages: NextPage = () => {
 
 
   return (
-    <NavContainer>
+    <NavContainer selectedTab='sent'>
       <Title level={1}>Sent messages</Title>
       <Space direction="vertical" size="large">
 

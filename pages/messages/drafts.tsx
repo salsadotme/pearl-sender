@@ -67,7 +67,7 @@ const DraftMessages: NextPage = () => {
 
 
   return (
-    <NavContainer>
+    <NavContainer selectedTab='drafts'>
       <Title level={1}>Draft messages</Title>
       <Space direction="vertical" size="large">
 

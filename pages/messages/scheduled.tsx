@@ -80,7 +80,7 @@ const ScheduledMessages: NextPage = () => {
 
 
   return (
-    <NavContainer>
+    <NavContainer selectedTab='scheduled'>
       <Title level={1}>Scheduled messages</Title>
       <Space direction="vertical" size="large">
 
