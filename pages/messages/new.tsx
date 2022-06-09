@@ -5,7 +5,7 @@ import NavContainer from '../../components/navContainer';
 
 const NewMessage: NextPage = () => {
   return (
-    <NavContainer>
+    <NavContainer selectedTab='drafts'>
       <Title level={1}>Create a message</Title>
       <MessageForm />
     </NavContainer>

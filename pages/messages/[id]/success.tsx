@@ -7,24 +7,22 @@ import NavContainer from '../../../components/navContainer';
 const Home: NextPage = () => {
   const router = useRouter();
   // sent vs scheduled
-  const [alreadySent, setAlreadySent] = useState(true);
+  const [alreadySent, setAlreadySent] = useState(false);
 
   useEffect(() => {
     // TODO: fetch message based on route id
   });
 
   return (
-    <NavContainer>
+    <NavContainer selectedTab={alreadySent ? "sent" : "schduled"}>
       {alreadySent && <Result
         status="success"
-        title="You've sent your first message!"
-        extra="Your message was posted to #announcements"
+        title="Your message was posted to #announcements"
       />}
 
       {!alreadySent && <Result
         status="success"
-        title="You've scheduled your first message!"
-        extra="Your message will be posted to #announcements in 24 hours"
+        title="Your message will be posted to #announcements in 24 hours"
       />}
     </NavContainer >
   )

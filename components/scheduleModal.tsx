@@ -13,7 +13,10 @@ interface ScheduleModalProps {
 }
 
 const ScheduleModal = ({ title, subTitle, visible, cancel, send, updateScheduledTime }: ScheduleModalProps) => {
-  const [scheduledTime, setScheduledTime] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [timezone, setTimezone] = useState('');
+
   return (
     <Modal
       title={title}
@@ -29,7 +32,7 @@ const ScheduleModal = ({ title, subTitle, visible, cancel, send, updateScheduled
           <Button onClick={cancel}>
             Cancel
           </Button>
-          <Button type="primary" onClick={() => updateScheduledTime(scheduledTime)} >
+          <Button type="primary" onClick={() => updateScheduledTime(time)} >
             {/* TODO: fix this copy when on the new message screen */}
             Schedule message
           </Button>
