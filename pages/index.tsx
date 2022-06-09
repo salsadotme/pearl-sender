@@ -2,12 +2,11 @@ import { Button } from 'antd';
 import Text from 'antd/lib/typography/Text';
 import Title from 'antd/lib/typography/Title';
 import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import NavContainer from '../components/navContainer';
 
 const Home: NextPage = () => {
-  const router = useRouter();
   const [firstTime, setFirstTime] = useState(false);
 
   useEffect(() => {
@@ -22,7 +21,7 @@ const Home: NextPage = () => {
         <p>
           You can now draft and schedule Discord announcements to your community.
         </p>
-        <Button type="primary" onClick={() => router.push("/messages/new")}>Create your first message</Button>
+        <Button type="primary"><Link href="/messages/new">Create your first message</Link></Button>
       </div>}
 
       {!firstTime && <div>
@@ -34,7 +33,7 @@ const Home: NextPage = () => {
         <p>
           You have <Text strong>0 scheduled messages</Text>.
         </p>
-        <Button type="primary" onClick={() => router.push("/messages/new")}>Create a message</Button>
+        <Button type="primary"><Link href="/messages/new">Create a message</Link></Button>
       </div>}
     </NavContainer>
   )

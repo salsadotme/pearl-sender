@@ -26,7 +26,7 @@ const possibleTimeZones = moment.tz.names().map(n => ({
 const ScheduleModal = ({ title, subTitle, visible, cancel, send, updateScheduledTime }: ScheduleModalProps) => {
   const [date, setDate] = useState<Moment | null>(moment());
   const [time, setTime] = useState<Moment | null>(moment());
-  const [timezone, setTimezone] = useState('');
+  const [timezone, setTimezone] = useState(moment.tz.guess());
 
   return (
     <Modal
