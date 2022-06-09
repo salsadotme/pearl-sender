@@ -6,34 +6,11 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import NavContainer from '../../components/navContainer';
-
-interface Draft {
-  id: string;
-  title: string;
-  createdAt: string;
-}
-
-const mockDrafts = [
-  {
-    id: "1",
-    title: "Partnership X Sofia's NFT Club",
-    createdAt: "Thu May 5 2022 08:14",
-  },
-  {
-    id: "2",
-    title: "Roadmap update",
-    createdAt: "Thu May 5 2022 08:14",
-  },
-  {
-    id: "3",
-    title: "Holder event at NFT NYC",
-    createdAt: "Thu May 5 2022 08:14",
-  },
-];
+import { Message, mockMessages } from '../../store';
 
 const DraftMessages: NextPage = () => {
   const router = useRouter();
-  const [drafts, setDrafts] = useState(mockDrafts);
+  const [drafts, setDrafts] = useState(mockMessages.filter(m => !m.sentAt && !m.scheduledFor));
 
   useEffect(() => {
     // TODO: fetch drafts from backend
@@ -42,7 +19,7 @@ const DraftMessages: NextPage = () => {
   function deleteMessage(id: string) {
   }
 
-  const columns: ColumnsType<Draft> = [
+  const columns: ColumnsType<Message> = [
     {
       title: 'Message title',
       dataIndex: 'title',

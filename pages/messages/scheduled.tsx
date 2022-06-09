@@ -7,42 +7,19 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import NavContainer from '../../components/navContainer';
 import ScheduleModal from '../../components/scheduleModal';
-
-interface Scheduled {
-  id: string;
-  title: string;
-  scheduledFor: string;
-}
-
-const mockScheduled = [
-  {
-    id: "1",
-    title: "Partnership X Sofia's NFT Club",
-    scheduledFor: "Thu May 5 2022 08:14",
-  },
-  {
-    id: "2",
-    title: "Roadmap update",
-    scheduledFor: "Thu May 5 2022 08:14",
-  },
-  {
-    id: "3",
-    title: "Holder event at NFT NYC",
-    scheduledFor: "Thu May 5 2022 08:14",
-  },
-];
+import { Message, mockMessages } from '../../store';
 
 const ScheduledMessages: NextPage = () => {
   const router = useRouter();
-  const [scheduled, setScheduled] = useState(mockScheduled);
+  const [scheduled, setScheduled] = useState(mockMessages.filter(m => m.scheduledFor));
   const [showModal, setShowModal] = useState(false);
-  const [selectedMessage, setSelectedMessage] = useState<Scheduled>();
+  const [selectedMessage, setSelectedMessage] = useState<Message>();
 
   useEffect(() => {
     // TODO: fetch scheduled from backend
   });
 
-  function selectMessage(message: Scheduled) {
+  function selectMessage(message: Message) {
     setSelectedMessage(message);
     setShowModal(true);
   }
@@ -50,7 +27,7 @@ const ScheduledMessages: NextPage = () => {
   function deleteMessage(id: string) {
   }
 
-  const columns: ColumnsType<Scheduled> = [
+  const columns: ColumnsType<Message> = [
     {
       title: 'Message title',
       dataIndex: 'title',

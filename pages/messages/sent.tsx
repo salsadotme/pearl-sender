@@ -1,46 +1,24 @@
 import { Button, Modal, Space, Table } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 import Title from 'antd/lib/typography/Title';
+import moment from 'moment';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import NavContainer from '../../components/navContainer';
-
-interface Sent {
-  id: string;
-  title: string;
-  sentAt: string;
-}
-
-const mockScheduled = [
-  {
-    id: "1",
-    title: "Partnership X Sofia's NFT Club",
-    sentAt: "Thu May 5 2022 08:14",
-  },
-  {
-    id: "2",
-    title: "Roadmap update",
-    sentAt: "Thu May 5 2022 08:14",
-  },
-  {
-    id: "3",
-    title: "Holder event at NFT NYC",
-    sentAt: "Thu May 5 2022 08:14",
-  },
-];
+import { Message, mockMessages } from '../../store';
 
 const SentMessages: NextPage = () => {
   const router = useRouter();
-  const [scheduled, setScheduled] = useState(mockScheduled);
+  const [scheduled, setScheduled] = useState(mockMessages.filter(m => m.sentAt));
   const [showModal, setShowModal] = useState(false);
-  const [selectedMessage, setSelectedMessage] = useState<Sent>();
+  const [selectedMessage, setSelectedMessage] = useState<Message>();
 
   useEffect(() => {
     // TODO: fetch scheduled from backend
   });
 
-  function selectMessage(message: Sent) {
+  function selectMessage(message: Message) {
     setSelectedMessage(message);
     setShowModal(true);
   }
@@ -48,7 +26,7 @@ const SentMessages: NextPage = () => {
   function deleteMessage(id: string) {
   }
 
-  const columns: ColumnsType<Sent> = [
+  const columns: ColumnsType<Message> = [
     {
       title: 'Message title',
       dataIndex: 'title',
@@ -59,7 +37,7 @@ const SentMessages: NextPage = () => {
     {
       title: 'Sent',
       dataIndex: 'sentAt',
-      key: 'sentAt',
+      render: s => moment(s).format('ddd MMM D [at] h:mma'),
     },
   ];
 
@@ -84,10 +62,15 @@ const SentMessages: NextPage = () => {
         onCancel={() => setShowModal(false)}
         footer={null}
       >
-        <p>We are excited to share that MovieShots is offering 40 spots and 1 free MovieShots NFT to the Meta Angels community.</p>
-        <p>To enter the allowlist raffle (40 spots), click here: https://premint.xyz/meta-angels-x-movieshots/</p>
-        <p>🎦About MovieShots🎦</p>
-        <p>MovieShots is the first feature film on the blockchain edited into its shots. They are a film collector's item for a new generation of film lovers!</p>
+        <p>
+          If you are planning to be in NYC on June 23rd for the DeGods event, please fill out this form.
+        </p>
+        <p>
+          This gives our event planner a better idea of how to properly plan for our event @everyone
+        </p>
+        <p>
+          <a>https://forms.gle/BzKXVs3zXSEVKsJEA</a>
+        </p>
       </Modal>}
     </NavContainer>
   )
