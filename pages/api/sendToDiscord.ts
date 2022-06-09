@@ -29,7 +29,7 @@ export default function handler(
           footer: { text: "Sent with Pearl: https://viapearl.xyz/messages/06a267e1-088b-414f-b6b2-195599e85b99" },
           author: {
             name: "Grace (WaterGods Cofounder)",
-            icon_url: "https://pbs.twimg.com/profile_images/1510435850202624000/sOn-hrNi_400x400.jpg"
+            icon_url: "https://mqpjnvbjczekbcaxnikd.supabase.co/storage/v1/object/public/snaps/poseidon.png"
           },
         }
       ]
