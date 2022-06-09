@@ -26,7 +26,7 @@ export default function handler(
           color: 39372,
           title: "NFT NYC EVENT RSVP",
           description,
-          footer: { text: "Sent with Pearl: https://viapearl.xyz/messages/06a267e1-088b-414f-b6b2-195599e85b99" },
+          footer: { text: "Sent with Pearl: https://trypearl.xyz/messages/06a267e1-088b-414f-b6b2-195599e85b99" },
           author: {
             name: "Grace (WaterGods Cofounder)",
             icon_url: "https://mqpjnvbjczekbcaxnikd.supabase.co/storage/v1/object/public/snaps/poseidon.png"
