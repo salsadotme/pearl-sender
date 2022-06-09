@@ -19,3 +19,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.select-time-container .ant-space-item:nth-child(3) {
+  flex: 1;
+}

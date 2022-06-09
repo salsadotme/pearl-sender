@@ -1,6 +1,8 @@
 import { GlobalOutlined } from '@ant-design/icons';
 import { Button, DatePicker, Modal, Select, Space, TimePicker } from 'antd';
 import Text from 'antd/lib/typography/Text';
+import { Moment } from 'moment';
+import moment from "moment-timezone";
 import { useState } from 'react';
 
 interface ScheduleModalProps {
@@ -12,9 +14,18 @@ interface ScheduleModalProps {
   updateScheduledTime: (time: string) => void;
 }
 
+function formatTimezone(n: string) {
+  return `GMT ${moment.tz(n).format('Z')} ${n}`;
+}
+
+const possibleTimeZones = moment.tz.names().map(n => ({
+  label: formatTimezone(n),
+  value: n,
+}));
+
 const ScheduleModal = ({ title, subTitle, visible, cancel, send, updateScheduledTime }: ScheduleModalProps) => {
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
+  const [date, setDate] = useState<Moment | null>(moment());
+  const [time, setTime] = useState<Moment | null>(moment());
   const [timezone, setTimezone] = useState('');
 
   return (
@@ -32,20 +43,32 @@ const ScheduleModal = ({ title, subTitle, visible, cancel, send, updateScheduled
           <Button onClick={cancel}>
             Cancel
           </Button>
-          <Button type="primary" onClick={() => updateScheduledTime(time)} >
+          <Button type="primary" onClick={() => updateScheduledTime(time!.format())} >
             {/* TODO: fix this copy when on the new message screen */}
             Schedule message
           </Button>
         </div>
       </div>}
     >
-      <Space direction="vertical">
+      <Space direction="vertical" style={{ width: "100%" }}>
         <Text strong>{subTitle}</Text>
-        <Space>
-          <DatePicker />
-          <TimePicker format="HH:mm" minuteStep={30} />
-          <Select placeholder="Select time zone" suffixIcon={<GlobalOutlined />} />
+        <Space style={{ width: "100%" }} className="select-time-container">
+          <DatePicker value={date} onChange={setDate} />
+          <TimePicker value={time} onChange={setTime} format="HH:mm" minuteStep={30} style={{ width: "90px" }} />
+          <Select
+            showSearch
+            value={timezone}
+            onSelect={setTimezone}
+            className="timezone-select"
+            placeholder="Select time zone"
+            suffixIcon={<GlobalOutlined />}
+            options={possibleTimeZones}
+            style={{ width: "100%" }}
+          />
         </Space>
+        <div style={{ opacity: "45%" }}>
+          Your timezone: {formatTimezone(moment.tz.guess())}
+        </div>
       </Space>
 
     </Modal>
