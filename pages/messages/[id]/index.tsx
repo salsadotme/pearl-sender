@@ -8,7 +8,7 @@ const Message: NextPage = () => {
       <div style={{ width: "540px", margin: "50px auto", padding: "24px", background: "white", borderRadius: "8px" }}>
         <Title level={2}>NFT NYC EVENT RSVP</Title>
         <p>
-          If you are planning to be in NYC on June 23rd for the DeGods event, please fill out this form.
+          If you are planning to be in NYC on June 23rd for the WaterGods event, please fill out this form.
         </p>
         <p>
           This gives our event planner a better idea of how to properly plan for our event @everyone
