@@ -6,7 +6,7 @@ import NavContainer from '../../../components/navContainer';
 const EditMessage: NextPage = () => {
   // TODO: fetch message based on route id, pass to MessageForm component
   return (
-    <NavContainer>
+    <NavContainer selectedTab='drafts'>
       <Title level={1}>Edit message</Title>
       <MessageForm />
     </NavContainer>
