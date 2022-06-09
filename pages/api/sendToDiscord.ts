@@ -11,11 +11,11 @@ This gives our event planner a better idea of how to properly plan for our event
 
 https://forms.gle/BzKXVs3zXSEVKsJEA`;
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  fetch(process.env.DISCORD_WEBHOOK_URL!, {
+  await fetch(process.env.DISCORD_WEBHOOK_URL!, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
