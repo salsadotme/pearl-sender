@@ -3,13 +3,12 @@ import { ColumnsType } from 'antd/lib/table';
 import Title from 'antd/lib/typography/Title';
 import moment from 'moment';
 import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import NavContainer from '../../components/navContainer';
 import { Message, mockMessages } from '../../store';
 
 const SentMessages: NextPage = () => {
-  const router = useRouter();
   const [scheduled, setScheduled] = useState(mockMessages.filter(m => m.sentAt));
   const [showModal, setShowModal] = useState(false);
   const [selectedMessage, setSelectedMessage] = useState<Message>();
@@ -52,7 +51,7 @@ const SentMessages: NextPage = () => {
             You haven't sent any messages yet
           </p>
         </div>}
-        <Button type="primary" onClick={() => router.push("/messages/new")}>Create a new message</Button>
+        <Button type="primary"><Link href="/messages/new">Create a new message</Link></Button>
 
         {scheduled.length !== 0 && <Table columns={columns} dataSource={scheduled} />}
       </Space>

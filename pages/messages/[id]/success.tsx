@@ -1,12 +1,11 @@
 import { Button } from 'antd';
 import Title from 'antd/lib/typography/Title';
 import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import NavContainer from '../../../components/navContainer';
 
 const Home: NextPage = () => {
-  const router = useRouter();
   // sent vs scheduled
   const [alreadySent, setAlreadySent] = useState(true);
 
@@ -21,7 +20,7 @@ const Home: NextPage = () => {
         <p>
           Your message has been posted to #announcements
         </p>
-        <Button onClick={() => router.push("/messages/sent")}>View all sent messages</Button>
+        <Button><Link href="/messages/sent">View all sent messages</Link></Button>
       </div>
       }
 
@@ -30,7 +29,7 @@ const Home: NextPage = () => {
         <p>
           Your message will be posted to #announcements in 24 hours
         </p>
-        <Button onClick={() => router.push("/messages/scheduled")}>View all scheduled messages</Button>
+        <Button><Link href="/messages/scheduled">View all scheduled messages</Link></Button>
       </div>}
     </NavContainer >
   )

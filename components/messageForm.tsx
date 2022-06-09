@@ -4,6 +4,7 @@ import TextArea from 'antd/lib/input/TextArea';
 import Text from 'antd/lib/typography/Text';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import ScheduleModal from './scheduleModal';
 
 const data = [
@@ -47,7 +48,8 @@ const MessageForm = () => {
   const router = useRouter();
 
   function sendNow() {
-    const id = "1";
+    // TODO: call discord
+    const id = uuidv4();
     router.push(`/messages/${id}/success`);
   }
 

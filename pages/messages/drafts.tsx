@@ -3,6 +3,7 @@ import { Button, Space, Table } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 import Title from 'antd/lib/typography/Title';
 import type { NextPage } from 'next';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import NavContainer from '../../components/navContainer';
@@ -53,7 +54,7 @@ const DraftMessages: NextPage = () => {
             You currently have no draft messages
           </p>
         </div>}
-        <Button type="primary" onClick={() => router.push("/messages/new")}>Create a new message</Button>
+        <Button type="primary"><Link href="/messages/new">Create a new message</Link></Button>
 
         {drafts.length !== 0 && <Table columns={columns} dataSource={drafts} />}
       </Space>
