@@ -10,12 +10,14 @@ interface NavContainerProps {
 
 const NavContainer: FunctionComponent<HTMLAttributes<HTMLDivElement> & NavContainerProps> = (props) => {
   return (
-    <HeaderContainer>
-      <Layout style={{ flexDirection: "row" }}>
+    <HeaderContainer className="pearl-container">
+      <Layout style={{ flexDirection: "row", background: "none" }}>
         <Sidebar selectedTab={props.selectedTab} />
-        <Layout>
-          <Content style={{ maxWidth: "720px", padding: "24px" }}>
+        <Layout style={{ background: "none" }}>
+          <Content style={{ padding: "24px", background: "white", marginLeft: "16px", borderRadius: "8px", flex: "unset" }}>
+            <div style={{ maxWidth: "720px" }}>
             {props.children}
+            </div>
           </Content>
         </Layout>
       </Layout>

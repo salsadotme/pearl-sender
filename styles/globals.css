@@ -11,6 +11,10 @@ body,
   flex: 1;
 }
 
+.pearl-container {
+  background: radial-gradient(100% 86.21% at 0% 13.79%, #006D75 0%, #00474F 50.52%, #22075E 100%);
+}
+
 a {
   color: inherit;
   text-decoration: none;

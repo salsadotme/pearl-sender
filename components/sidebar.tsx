@@ -32,9 +32,9 @@ interface SidebarProps {
 
 const Sidebar = (props: SidebarProps) => {
   return (
-    <Sider width={220}>
+    <Sider width={220} style={{ background: "none" }}>
       <Menu
-        style={{ height: "100%", padding: "10px 0" }}
+        style={{ padding: "10px 0", borderRadius: "8px" }}
         mode="inline"
         items={items}
         selectedKeys={[props.selectedTab]}
