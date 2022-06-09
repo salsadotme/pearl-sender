@@ -48,7 +48,7 @@ const SentMessages: NextPage = () => {
 
         {scheduled.length === 0 && <div>
           <p>
-            You haven't sent any messages yet
+            You haven&apos;t sent any messages yet
           </p>
         </div>}
         <Button type="primary"><Link href="/messages/new">Create a new message</Link></Button>

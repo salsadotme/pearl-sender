@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         <Title level={1}>Welcome back! 🤟</Title>
 
         <p>
-          You've sent a total of <Text strong>2 messages</Text> to your community.
+          You&apos;ve sent a total of <Text strong>2 messages</Text> to your community.
         </p>
         <p>
           You have <Text strong>0 scheduled messages</Text>.

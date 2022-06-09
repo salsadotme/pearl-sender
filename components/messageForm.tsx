@@ -55,7 +55,7 @@ const MessageForm = () => {
 
   function checkboxItems() {
     return <div style={{ columnCount: 3 }}>
-      {data.map(item => <Checkbox onChange={e => updateCategories(item.label, e.target.checked)} style={{ marginLeft: 0 }}>
+      {data.map(item => <Checkbox key={item.label} onChange={e => updateCategories(item.label, e.target.checked)} style={{ marginLeft: 0 }}>
         {item.label}
         <Tooltip title={item.description}>
           <QuestionCircleOutlined style={{ marginLeft: "5px" }} />
