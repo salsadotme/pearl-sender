@@ -17,7 +17,7 @@ const Message: NextPage = () => {
           <a>https://forms.gle/BzKXVs3zXSEVKsJEA</a>
         </p>
         <div style={{ opacity: "45%" }}>
-          Sent by 2x2B...tjWu on {moment("2022-06-09T19:31:20Z").format('ddd MMM D [at] h:mma')}
+          Sent by 2x2B...tjWu on {moment("2022-06-22T21:31:20Z").format('ddd MMM D [at] h:mma')}
         </div>
       </div>
     </div>

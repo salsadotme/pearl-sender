@@ -11,7 +11,7 @@ export const mockMessages: Message[] = [
     id: "1",
     title: "NFT NYC EVENT RSVP",
     createdAt: "2022-06-07T05:31:20Z",
-    sentAt: "2022-06-09T19:31:20Z",
+    sentAt: "2022-06-22T21:31:20Z",
   },
   {
     id: "2",
